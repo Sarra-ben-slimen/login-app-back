@@ -2,20 +2,15 @@
   {
     "ContainingType": "LoginApplication.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "login",
+    "RelativePath": "Auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "LoginApplication.DTOs.UserLoginDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -23,20 +18,15 @@
   {
     "ContainingType": "LoginApplication.Controllers.AuthController",
     "Method": "Register",
-    "RelativePath": "register",
+    "RelativePath": "Auth/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "LoginApplication.DTOs.UserLoginDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

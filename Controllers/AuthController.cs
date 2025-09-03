@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoginApplication.Controllers
 {
-    public class AuthController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class AuthController : ControllerBase
     {
        private readonly IUserService _userService;  
 
