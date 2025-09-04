@@ -55,17 +55,19 @@ public class UserService : IUserService
 
     private string GenerateJwtToken(User user)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_jwtKey);
-
-        var tokenDescriptor = new SecurityTokenDescriptor
+        var Claims = new List<Claim> 
         {
-            Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.Email) }),
-            Expires = DateTime.UtcNow.AddHours(1),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            new Claim(ClaimTypes.Name, user.Email),
+            new Claim(ClaimTypes.Role, user.role)
         };
+       var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtKey));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var token = new JwtSecurityToken(
+            claims: Claims,
+            expires: DateTime.Now.AddHours(1),
+            signingCredentials: creds
+            );
 
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

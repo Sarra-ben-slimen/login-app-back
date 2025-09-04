@@ -1,6 +1,8 @@
-﻿using LoginApplication.DTOs;
+﻿using LoginApplication.Data;
+using LoginApplication.DTOs;
 using LoginApplication.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LoginApplication.Controllers
 {
@@ -9,10 +11,11 @@ namespace LoginApplication.Controllers
     public class AuthController : ControllerBase
     {
        private readonly IUserService _userService;  
-
-        public AuthController(IUserService userService)
+        private readonly AppDbContext _context;
+        public AuthController(IUserService userService, AppDbContext context)
          {
               _userService = userService;
+              _context= context;
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserLoginDto dto)
@@ -28,10 +31,15 @@ namespace LoginApplication.Controllers
             }
         }
         [HttpPost("login")] 
-        public async Task<IActionResult> Login(UserLoginDto dto)
+        public async Task<IActionResult> Login([FromBody] UserLoginDto dto)
         {
             try
             {
+                var user = await _context.Users.FirstOrDefaultAsync(u=>u.Email==dto.Email);
+                if(user==null )
+                {
+                    return Unauthorized();
+                }
                 var token = await _userService.LoginAsync(dto);
                 return Ok(new {token});
             }
@@ -40,5 +48,6 @@ namespace LoginApplication.Controllers
                 return BadRequest(new {message = ex.Message});
             }
         }
+         
     }
 }

@@ -169,5 +169,5 @@ D:\Users\MSI\source\repos\LoginApplication\LoginApplication\obj\Debug\net8.0\Log
 D:\Users\MSI\source\repos\LoginApplication\LoginApplication\obj\Debug\net8.0\LoginApplication.genruntimeconfig.cache
 D:\Users\MSI\source\repos\LoginApplication\LoginApplication\obj\Debug\net8.0\ref\LoginApplication.dll
 D:\Users\MSI\source\repos\LoginApplication\LoginApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Users\MSI\source\repos\LoginApplication\LoginApplication\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Users\MSI\source\repos\LoginApplication\LoginApplication\obj\Debug\net8.0\LoginApplication.sourcelink.json
+D:\Users\MSI\source\repos\LoginApplication\LoginApplication\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
